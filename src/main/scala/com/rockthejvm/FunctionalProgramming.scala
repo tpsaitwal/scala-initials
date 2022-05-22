@@ -110,6 +110,65 @@ object FunctionalProgramming extends App {
     number <- List(1,2,3)
     letter <- List('a', 'b', 'c')
   } yield s"$number - $letter"
+  // This is equivalent to map and flatmap chain above
 
   println(alterNativePairs)
+
+  /**
+   * Collections
+   */
+  // List
+  val aLst = List(1,2,4,5,6)
+  println(s"first element ${aLst.head}, last element ${aLst.tail}")
+  // prepend a list with 0 as below
+  val aPrependedLst = 0 :: aLst
+  println(s"prepended list with :: $aPrependedLst") // List(0,1,2,4,5,6)
+  // another operator for prepend list
+  val bPrependedLst = 0 +: aLst
+  println(s"bPrependedLst list with +: $bPrependedLst")
+  // appended or extended list
+  val extendList = aLst :+ 7
+  println(s"extended list :+ $extendList")
+
+  // Sequences
+  val aSequence: Seq[Int] = Seq(1, 2, 4) // Seq.apply(1,2,3) - its a trait
+  val accessedIndex = aSequence.apply(1) // return element at index 1
+  val accessIndex = aSequence(1) // return same no
+
+  println(s"apply $accessedIndex or not apply $accessIndex")
+
+  // vectors: fast sequence implementation
+  val aVector = Vector(1,2,3,4)
+
+  // sets - no duplicates
+  val aSet = Set(1,2,3,4,2,3,6)
+  println(s"Set $aSet") // No duplicates
+
+  println(s"Has set has 5? ${aSet.contains(5)}")
+
+  // add element to set
+  val addedSet = aSet + 5
+  println(s"addedset  $addedSet")
+
+  // remove element from set
+  val remveset = aSet - 6
+  println(s"remov set $remveset")
+
+  // range used for iteration - it does not contain elements but can process as if it did
+  val aRange = 1 to 1000
+  val multTwo = aRange.map(x => x * 2).toList
+  println(multTwo)
+
+  // tuples - group of values under same values
+  val aTuple =  Tuple4("Mr", "Tejas", "Pravin", "Saitwal")
+  println(s"My name is ${aTuple._1}. ${aTuple._2} ${aTuple._3} ${aTuple._4}")
+
+  // Map
+  val aPhoneBook:Map[String, Int] = Map(
+    ("Tejas", 781542122), // These are tuples
+    ("Dhjkhk", 46546466),
+    "Jean" -> 451212  // Same as above tuple ("Jean", 451212)
+  ) // Companion object
+
+  println(aPhoneBook)
 }
